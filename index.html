@@ -1,4 +1,124 @@
-```html
+ChatGPT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pasted text(47).txt
+Document
+"" Make that someone can submit proposal using his email to mac041@hotmail.com
+
+
+Pasted text(48).txt
+Document
+"" Improve so that email can be sent to mac041@hotmail.com correctly to receive their request
+
+91f0c3a0-1af6-4821-9f63-a43826dbd48d.png
+
+
+Pasted text(50).txt
+Document
+"" give me to correct the error
+
+I found the problem.
+
+You now have two forms mixed together in the Contact section. After your new FormSubmit form closes, the old form fields are still present, creating invalid HTML. 
+
+
+Delete EVERYTHING from:
+<div class="form-group">
+    <label for="org">Organization</label>
+down to:
+
+<button type="submit" class="submit-btn">Submit Request</button>
+</form>
+This entire block must be removed:
+
+<div class="form-group">
+    <label for="org">Organization</label>
+    <input type="text" id="org" required placeholder="NGO, Company, or Govt Entity">
+</div>
+
+<div class="form-group">
+    <label for="email">Corporate Email</label>
+    <input type="email" id="email" required placeholder="john@organization.org">
+</div>
+
+<div class="form-group">
+    <label for="service">Required Capability</label>
+    <select id="service">
+        <option>Market Research & Intelligence</option>
+        <option>Monitoring & Evaluation (M&E)</option>
+        <option>Feasibility & Risk Advisory</option>
+        <option>Other Research/Advisory Inquiry</option>
+    </select>
+</div>
+
+<button type="submit" class="submit-btn">
+    Submit Request
+</button>
+
+</form>
+After deletion, your code should end like this:
+<button type="submit" class="submit-btn">
+    Submit Proposal Request
+</button>
+
+</form>
+
+</div>
+</div>
+</section>
+Another important issue
+Replace:
+
+<form action="https://formsubmit.co/mac041@hotmail.com" method="POST">
+with:
+
+<form action="https://formsubmit.co/mac041@hotmail.com" method="post">
+(lowercase post is the HTML standard and avoids issues with some builders).
+
+Final step
+After uploading:
+
+Submit a test form.
+
+Check mac041@hotmail.com.
+
+FormSubmit will send a verification email.
+
+Click the verification link.
+
+Test again.
+
+If you still get the FormSubmit error after deleting the duplicate form section, send the new updated HTML file, and I can pinpoint the exact line causing the issue.
+
+
+
+Pasted text(51).txt
+Document
+"Fully improve with your corrections all in here to copy please
+
+Thought for a couple of seconds
+Your current file has broken form structure because the form closes too early and old duplicate fields remain after it. 
+
+
+Copy and replace all your HTML with this corrected full code:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -525,4 +645,621 @@
 
 </body>
 </html>
-```
+After you publish, submit one test request. Then open mac041@hotmail.com and click the FormSubmit verification link.
+
+
+No sending and not telling if sent or not
+
+Thought for 7s
+The problem is: normal FormSubmit redirects to another page and may not show success on your website. Use AJAX FormSubmit so the page shows Sending… / Sent / Error. FormSubmit supports both normal HTML forms and AJAX submissions. 
+
+Replace your whole form only with this:
+
+<div class="contact-form">
+
+    <form id="proposalForm">
+
+        <input type="hidden" name="_subject" value="New Proposal Request - REAL Consulting">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="Full Name" required placeholder="John Doe">
+        </div>
+
+        <div class="form-group">
+            <label for="org">Organization *</label>
+            <input type="text" id="org" name="Organization" required placeholder="NGO, Company, Government Entity">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com">
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="text" id="phone" name="Phone Number" placeholder="+252 XX XXX XXXX">
+        </div>
+
+        <div class="form-group">
+            <label for="service">Required Service *</label>
+            <select id="service" name="Required Service" required>
+                <option value="">Select Service</option>
+                <option>Market Research</option>
+                <option>Monitoring & Evaluation (M&E)</option>
+                <option>Baseline Survey</option>
+                <option>Endline Survey</option>
+                <option>Feasibility Study</option>
+                <option>Data Analysis</option>
+                <option>Strategic Advisory</option>
+                <option>Training & Capacity Building</option>
+                <option>Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="budget">Estimated Budget</label>
+            <input type="text" id="budget" name="Estimated Budget" placeholder="USD 5,000">
+        </div>
+
+        <div class="form-group">
+            <label for="timeline">Expected Timeline</label>
+            <input type="text" id="timeline" name="Expected Timeline" placeholder="e.g. 2 Months">
+        </div>
+
+        <div class="form-group">
+            <label for="details">Project / Proposal Details *</label>
+            <textarea id="details" name="Project Details" rows="6" required
+                placeholder="Describe your project objectives, scope of work, expected outputs, timeline, and any special requirements."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+            Submit Proposal Request
+        </button>
+
+        <p id="formMessage" style="margin-top:15px; font-weight:600;"></p>
+
+    </form>
+
+</div>
+
+<script>
+document.getElementById("proposalForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const form = event.target;
+    const submitBtn = document.getElementById("submitBtn");
+    const message = document.getElementById("formMessage");
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Sending...";
+    message.style.color = "#333";
+    message.innerText = "Please wait. Your proposal request is being sent.";
+
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/ajax/mac041@hotmail.com", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success === "true" || data.success === true) {
+            message.style.color = "green";
+            message.innerText = "✅ Your proposal request has been sent successfully.";
+            form.reset();
+        } else {
+            message.style.color = "red";
+            message.innerText = "❌ Sending failed. Please try again or email mac041@hotmail.com directly.";
+        }
+    })
+    .catch(error => {
+        message.style.color = "red";
+        message.innerText = "❌ Network error. Please check your internet or email mac041@hotmail.com directly.";
+    })
+    .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Submit Proposal Request";
+    });
+});
+</script>
+Important: after the first test, check mac041@hotmail.com and confirm FormSubmit’s verification email.
+
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+        color: var(--text-dark);
+        line-height: 1.6;
+        background-color: var(--white);
+    }
+
+    /* Sticky Header */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+        color: var(--white);
+        font-weight: 700;
+        font-size: 1.4rem;
+        letter-spacing: 1px;
+    }
+
+    .logo span {
+        color: var(--accent);
+    }
+
+    nav a {
+        color: var(--white);
+        text-decoration: none;
+        margin-right: 2rem;
+        font-size: 0.95rem;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: var(--accent);
+    }
+
+    .cta-btn {
+        background-color: var(--accent);
+        color: var(--primary);
+        padding: 0.6rem 1.2rem;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .cta-btn:hover {
+        background-color: var(--white);
+        color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        color: var(--white);
+        padding: 12rem 5% 6rem 5%;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        max-width: 900px;
+        margin: 0 auto 1.5rem auto;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+        color: #CCD6F6;
+        max-width: 750px;
+        margin: 0 auto 2.5rem auto;
+    }
+
+    .hero-ctas .cta-btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .hero-ctas .secondary-btn {
+        background-color: transparent;
+        color: var(--white);
+        border: 2px solid var(--white);
+    }
+
+    .hero-ctas .secondary-btn:hover {
+        background-color: var(--white);
+        color: var(--primary);
+    }
+
+    /* Metrics Bar */
+    .metrics-bar {
+        background-color: var(--light-bg);
+        padding: 3rem 5%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        text-align: center;
+        border-bottom: 1px solid #E2E8F0;
+    }
+
+    .metric-item h3 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+
+    .metric-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        font-weight: 500;
+    }
+
+    /* Main Container for Sections */
+    section {
+        padding: 5rem 5%;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 3rem;
+    }
+
+    /* Services Grid */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .service-card {
+        background: var(--white);
+        padding: 2.5rem 2rem;
+        border-radius: 6px;
+        border: 1px solid #E2E8F0;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        border-color: var(--accent);
+    }
+
+    .service-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+
+    .service-card p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* Case Studies */
+    .case-studies {
+        background-color: var(--light-bg);
+    }
+
+    .case-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+    }
+
+    .case-card {
+        background: var(--white);
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid #E2E8F0;
+    }
+
+    .case-content {
+        padding: 2rem;
+    }
+
+    .case-tag {
+        color: var(--accent);
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    .case-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+    }
+
+    .case-metric {
+        background-color: #E6F7FF;
+        color: var(--primary);
+        padding: 1rem;
+        border-left: 4px solid var(--accent);
+        font-weight: 600;
+        margin-top: 1.5rem;
+    }
+
+    /* Contact & Forms */
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .contact-info h2 {
+        color: var(--primary);
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-form {
+        background: var(--white);
+        border: 1px solid #E2E8F0;
+        padding: 2.5rem;
+        border-radius: 6px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #CBD5E1;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+
+    .submit-btn {
+        background-color: var(--primary);
+        color: var(--white);
+        border: none;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--primary);
+        color: var(--white);
+        text-align: center;
+        padding: 2rem 5%;
+        font-size: 0.9rem;
+        border-top: 1px solid var(--secondary);
+    }
+
+    /* Responsive Setup */
+    @media (max-width: 768px) {
+        header nav { display: none; }
+        .hero h1 { font-size: 2rem; }
+        .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+    }
+</style>
+<!-- Sticky Header Navigation -->
+<header>
+    <div class="logo">REAL<span>.</span></div>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#contact">About</a>
+    </nav>
+    <a href="#contact" class="cta-btn">Schedule Consultation</a>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Evidence-Based Research & Strategic Consulting That Drives Better Decisions</h1>
+    <p>We help organizations, governments, NGOs, and businesses solve complex challenges through rigorous research, market intelligence, and expert advisory services.</p>
+    <div class="hero-ctas">
+        <a href="#contact" class="cta-btn">Schedule a Consultation</a>
+        <a href="#contact" class="cta-btn secondary-btn">Request a Proposal</a>
+    </div>
+</section>
+
+<!-- Metrics & Trust Radar -->
+<div class="metrics-bar">
+    <div class="metric-item">
+        <h3>100+</h3>
+        <p>Projects Completed</p>
+    </div>
+    <div class="metric-item">
+        <h3>50M+</h3>
+        <p>Data Points Analyzed</p>
+    </div>
+    <div class="metric-item">
+        <h3>5+</h3>
+        <p>East African Regions Served</p>
+    </div>
+    <div class="metric-item">
+        <h3>94%</h3>
+        <p>Client Retention Rate</p>
+    </div>
+</div>
+
+<!-- Services Overview -->
+<section id="services">
+    <h2 class="section-title">Our Capabilities</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>Market Research</h3>
+            <p>Gain unshakeable clarity on regional demand, consumer behaviors, and competitor blindspots with our empirical data collection.</p>
+        </div>
+        <div class="service-card">
+            <h3>Monitoring & Evaluation</h3>
+            <p>Systematic, reliable assessment systems custom-built for large-scale NGO, development, and governmental policy initiatives.</p>
+        </div>
+        <div class="service-card">
+            <h3>Feasibility Studies</h3>
+            <p>Mitigate regulatory, physical, and financial risk before launching major infrastructural or market investments.</p>
+        </div>
+        <div class="service-card">
+            <h3>Data Analysis</h3>
+            <p>Transform sprawling, disorganized organizational records into clean, interactive analytics dashboards built for scale.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Case Studies Section -->
+<section class="case-studies" id="cases">
+    <h2 class="section-title">Verified Outcomes</h2>
+    <div class="case-grid">
+        <div class="case-card">
+            <div class="case-content">
+                <span class="case-tag">Market Intelligence</span>
+                <h3>Telecom Sector Regional Assessment</h3>
+                <p>Designed a mixed-method research model spanning 1,500 quantitative surveys to isolate untapped consumer touchpoints.</p>
+                <div class="case-metric">Impact: Captured 500,000 new users within 12 months</div>
+            </div>
+        </div>
+        <div class="case-card">
+            <div class="case-content">
+                <span class="case-tag">Policy Framework</span>
+                <h3>SME Digital Payments Readiness</h3>
+                <p>Delivered an extensive public-private policy framework mapping regional infrastructure readiness for localized mobile commerce options.</p>
+                <div class="case-metric">Impact: Adopted by local regional regulatory entities</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- High-Converting Contact Intake Form -->
+<section id="contact">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Ready to Make Better Decisions?</h2>
+            <p style="color: var(--text-light); margin-bottom: 2rem;">Don't rely on guesswork. Book a strategy block with our lead researchers or request a tailored project proposal today.</p>
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">📍 Location</p>
+            <p style="color: var(--text-light); margin-bottom: 1.5rem;">Hargeisa, Woqooyi Galbeed, Somaliland</p>
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">📧 Direct Channel</p>
+            <p style="color: var(--text-light);"><a href="mailto:mac041@hotmail.com" style="color: var(--text-light); text-decoration: none;">mac041@hotmail.com</a></p>
+        </div>
+        <div class="contact-form">
+
+<form action="https://formsubmit.co/mac041@hotmail.com" method="POST">
+
+    <!-- FormSubmit Configuration -->
+    <input type="hidden" name="_subject"
+           value="New Proposal Request - REAL Consulting">
+
+    <input type="hidden" name="_template" value="table">
+
+    <input type="hidden" name="_captcha" value="false">
+
+    <!-- Client Information -->
+
+    <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text"
+               id="name"
+               name="Full Name"
+               required
+               placeholder="John Doe">
+    </div>
+
+   <button type="submit" class="submit-btn">Submit Request</button>
+    <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email"
+               id="email"
+               name="Email Address"
+               required
+               placeholder="john@example.com">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text"
+               id="phone"
+               name="Phone Number"
+               placeholder="+252 XX XXX XXXX">
+    </div>
+
+    <div class="form-group">
+        <label for="service">Required Service *</label>
+        <select id="service"
+                name="Required Service"
+                required>
+
+            <option value="">Select Service</option>
+            <option>Market Research</option>
+            <option>Monitoring & Evaluation (M&E)</option>
+            <option>Baseline Survey</option>
+            <option>Endline Survey</option>
+            <option>Feasibility Study</option>
+            <option>Data Analysis</option>
+            <option>Strategic Advisory</option>
+            <option>Training & Capacity Building</option>
+            <option>Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="budget">Estimated Budget</label>
+        <input type="text"
+               id="budget"
+               name="Estimated Budget"
+               placeholder="USD 5,000">
+    </div>
+
+    <div class="form-group">
+        <label for="timeline">Expected Timeline</label>
+        <input type="text"
+               id="timeline"
+               name="Expected Timeline"
+               placeholder="e.g. 2 Months">
+    </div>
+
+    <div class="form-group">
+        <label for="details">Project / Proposal Details *</label>
+        <textarea id="details"
+                  name="Project Details"
+                  rows="6"
+                  required
+                  placeholder="Describe your project objectives, scope of work, expected outputs, timeline, and any special requirements."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">
+        Submit Proposal Request
+    </button>
+
+</form>
+<!-- Simple Corporate Footer -->
+<footer>
+    <p>&copy; 2026 RESEARCH EXCELLENCE AND LEARNING (REAL Consulting Firm). All rights reserved. Strategically Built for High Conversions.</p>
+</footer>
+
+Close
