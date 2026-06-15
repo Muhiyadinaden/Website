@@ -1,9 +1,11 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESEARCH EXCELLENCE AND LEARNING (REAL Consulting Firm)</title>
+
     <style>
         :root {
             --primary: #0A192F;
@@ -28,7 +30,6 @@
             background-color: var(--white);
         }
 
-        /* Sticky Header */
         header {
             position: fixed;
             top: 0;
@@ -59,7 +60,6 @@
             text-decoration: none;
             margin-right: 2rem;
             font-size: 0.95rem;
-            transition: color 0.3s;
         }
 
         nav a:hover {
@@ -73,7 +73,6 @@
             border-radius: 4px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
 
         .cta-btn:hover {
@@ -81,7 +80,6 @@
             color: var(--primary);
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--white);
@@ -109,18 +107,17 @@
             margin: 0 0.5rem;
         }
 
-        .hero-ctas .secondary-btn {
+        .secondary-btn {
             background-color: transparent;
             color: var(--white);
             border: 2px solid var(--white);
         }
 
-        .hero-ctas .secondary-btn:hover {
+        .secondary-btn:hover {
             background-color: var(--white);
             color: var(--primary);
         }
 
-        /* Metrics Bar */
         .metrics-bar {
             background-color: var(--light-bg);
             padding: 3rem 5%;
@@ -143,7 +140,6 @@
             font-weight: 500;
         }
 
-        /* Main Container for Sections */
         section {
             padding: 5rem 5%;
         }
@@ -155,19 +151,19 @@
             margin-bottom: 3rem;
         }
 
-        /* Services Grid */
-        .services-grid {
+        .services-grid,
+        .case-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .service-card {
+        .service-card,
+        .case-card {
             background: var(--white);
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border-radius: 6px;
             border: 1px solid #E2E8F0;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .service-card:hover {
@@ -176,37 +172,20 @@
             border-color: var(--accent);
         }
 
-        .service-card h3 {
+        .service-card h3,
+        .case-card h3 {
             color: var(--primary);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
         }
 
-        .service-card p {
+        .service-card p,
+        .case-card p {
             color: var(--text-light);
             font-size: 0.95rem;
         }
 
-        /* Case Studies */
         .case-studies {
             background-color: var(--light-bg);
-        }
-
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .case-card {
-            background: var(--white);
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid #E2E8F0;
-        }
-
-        .case-content {
-            padding: 2rem;
         }
 
         .case-tag {
@@ -219,11 +198,6 @@
             display: inline-block;
         }
 
-        .case-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
         .case-metric {
             background-color: #E6F7FF;
             color: var(--primary);
@@ -233,7 +207,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Contact & Forms */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -267,7 +240,9 @@
             font-size: 0.9rem;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #CBD5E1;
@@ -275,7 +250,9 @@
             font-size: 1rem;
         }
 
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: var(--accent);
         }
@@ -290,14 +267,12 @@
             font-weight: 600;
             border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s;
         }
 
         .submit-btn:hover {
             background-color: var(--secondary);
         }
 
-        /* Footer */
         footer {
             background-color: var(--primary);
             color: var(--white);
@@ -307,242 +282,247 @@
             border-top: 1px solid var(--secondary);
         }
 
-        /* Responsive Setup */
         @media (max-width: 768px) {
-            header nav { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .contact-container { grid-template-columns: 1fr; gap: 2rem; }
+            header nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Sticky Header Navigation -->
-    <header>
-        <div class="logo">REAL<span>.</span></div>
-        <nav>
-            <a href="#services">Services</a>
-            <a href="#cases">Case Studies</a>
-            <a href="#contact">About</a>
-        </nav>
-        <a href="#contact" class="cta-btn">Schedule Consultation</a>
-    </header>
+<header>
+    <div class="logo">REAL<span>.</span></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Evidence-Based Research & Strategic Consulting That Drives Better Decisions</h1>
-        <p>We help organizations, governments, NGOs, and businesses solve complex challenges through rigorous research, market intelligence, and expert advisory services.</p>
-        <div class="hero-ctas">
-            <a href="#contact" class="cta-btn">Schedule a Consultation</a>
-            <a href="#contact" class="cta-btn secondary-btn">Request a Proposal</a>
-        </div>
-    </section>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-    <!-- Metrics & Trust Radar -->
-    <div class="metrics-bar">
-        <div class="metric-item">
-            <h3>100+</h3>
-            <p>Projects Completed</p>
-        </div>
-        <div class="metric-item">
-            <h3>50M+</h3>
-            <p>Data Points Analyzed</p>
-        </div>
-        <div class="metric-item">
-            <h3>5+</h3>
-            <p>East African Regions Served</p>
-        </div>
-        <div class="metric-item">
-            <h3>94%</h3>
-            <p>Client Retention Rate</p>
-        </div>
+    <a href="#contact" class="cta-btn">Submit Proposal</a>
+</header>
+
+<section class="hero">
+    <h1>Evidence-Based Research & Strategic Consulting That Drives Better Decisions</h1>
+    <p>
+        We help organizations, governments, NGOs, and businesses solve complex challenges
+        through rigorous research, market intelligence, monitoring, evaluation, and advisory services.
+    </p>
+
+    <div class="hero-ctas">
+        <a href="#contact" class="cta-btn">Submit Proposal Request</a>
+        <a href="#services" class="cta-btn secondary-btn">View Services</a>
+    </div>
+</section>
+
+<div class="metrics-bar">
+    <div class="metric-item">
+        <h3>100+</h3>
+        <p>Projects Completed</p>
     </div>
 
-    <!-- Services Overview -->
-    <section id="services">
-        <h2 class="section-title">Our Capabilities</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Market Research</h3>
-                <p>Gain unshakeable clarity on regional demand, consumer behaviors, and competitor blindspots with our empirical data collection.</p>
-            </div>
-            <div class="service-card">
-                <h3>Monitoring & Evaluation</h3>
-                <p>Systematic, reliable assessment systems custom-built for large-scale NGO, development, and governmental policy initiatives.</p>
-            </div>
-            <div class="service-card">
-                <h3>Feasibility Studies</h3>
-                <p>Mitigate regulatory, physical, and financial risk before launching major infrastructural or market investments.</p>
-            </div>
-            <div class="service-card">
-                <h3>Data Analysis</h3>
-                <p>Transform sprawling, disorganized organizational records into clean, interactive analytics dashboards built for scale.</p>
-            </div>
-        </div>
-    </section>
+    <div class="metric-item">
+        <h3>50M+</h3>
+        <p>Data Points Analyzed</p>
+    </div>
 
-    <!-- Case Studies Section -->
-    <section class="case-studies" id="cases">
-        <h2 class="section-title">Verified Outcomes</h2>
-        <div class="case-grid">
-            <div class="case-card">
-                <div class="case-content">
-                    <span class="case-tag">Market Intelligence</span>
-                    <h3>Telecom Sector Regional Assessment</h3>
-                    <p>Designed a mixed-method research model spanning 1,500 quantitative surveys to isolate untapped consumer touchpoints.</p>
-                    <div class="case-metric">Impact: Captured 500,000 new users within 12 months</div>
-                </div>
-            </div>
-            <div class="case-card">
-                <div class="case-content">
-                    <span class="case-tag">Policy Framework</span>
-                    <h3>SME Digital Payments Readiness</h3>
-                    <p>Delivered an extensive public-private policy framework mapping regional infrastructure readiness for localized mobile commerce options.</p>
-                    <div class="case-metric">Impact: Adopted by local regional regulatory entities</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="metric-item">
+        <h3>5+</h3>
+        <p>East African Regions Served</p>
+    </div>
 
-    <!-- High-Converting Contact Intake Form -->
-    <section id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h2>Ready to Make Better Decisions?</h2>
-                <p style="color: var(--text-light); margin-bottom: 2rem;">Don't rely on guesswork. Book a strategy block with our lead researchers or request a tailored project proposal today.</p>
-                <p style="font-weight: 600; margin-bottom: 0.5rem;">📍 Location</p>
-                <p style="color: var(--text-light); margin-bottom: 1.5rem;">Hargeisa, Woqooyi Galbeed, Somaliland</p>
-                <p style="font-weight: 600; margin-bottom: 0.5rem;">📧 Direct Channel</p>
-                <p style="color: var(--text-light);"><a href="mailto:mac041@hotmail.com" style="color: var(--text-light); text-decoration: none;">mac041@hotmail.com</a></p>
-            </div>
-            <div class="contact-form">
-
-    <form action="https://formsubmit.co/mac041@hotmail.com" method="POST">
-
-        <!-- FormSubmit Configuration -->
-        <input type="hidden" name="_subject"
-               value="New Proposal Request - REAL Consulting">
-
-        <input type="hidden" name="_template" value="table">
-
-        <input type="hidden" name="_captcha" value="false">
-
-        <!-- Client Information -->
-
-        <div class="form-group">
-            <label for="name">Full Name *</label>
-            <input type="text"
-                   id="name"
-                   name="Full Name"
-                   required
-                   placeholder="John Doe">
-        </div>
-
-        <div class="form-group">
-            <label for="org">Organization *</label>
-            <input type="text"
-                   id="org"
-                   name="Organization"
-                   required
-                   placeholder="NGO, Company, Government Entity">
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email Address *</label>
-            <input type="email"
-                   id="email"
-                   name="Email Address"
-                   required
-                   placeholder="john@example.com">
-        </div>
-
-        <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="text"
-                   id="phone"
-                   name="Phone Number"
-                   placeholder="+252 XX XXX XXXX">
-        </div>
-
-        <div class="form-group">
-            <label for="service">Required Service *</label>
-            <select id="service"
-                    name="Required Service"
-                    required>
-
-                <option value="">Select Service</option>
-                <option>Market Research</option>
-                <option>Monitoring & Evaluation (M&E)</option>
-                <option>Baseline Survey</option>
-                <option>Endline Survey</option>
-                <option>Feasibility Study</option>
-                <option>Data Analysis</option>
-                <option>Strategic Advisory</option>
-                <option>Training & Capacity Building</option>
-                <option>Other</option>
-
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="budget">Estimated Budget</label>
-            <input type="text"
-                   id="budget"
-                   name="Estimated Budget"
-                   placeholder="USD 5,000">
-        </div>
-
-        <div class="form-group">
-            <label for="timeline">Expected Timeline</label>
-            <input type="text"
-                   id="timeline"
-                   name="Expected Timeline"
-                   placeholder="e.g. 2 Months">
-        </div>
-
-        <div class="form-group">
-            <label for="details">Project / Proposal Details *</label>
-            <textarea id="details"
-                      name="Project Details"
-                      rows="6"
-                      required
-                      placeholder="Describe your project objectives, scope of work, expected outputs, timeline, and any special requirements."></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">
-            Submit Proposal Request
-        </button>
-
-    </form>
-
+    <div class="metric-item">
+        <h3>94%</h3>
+        <p>Client Retention Rate</p>
+    </div>
 </div>
-                    <div class="form-group">
-                        <label for="org">Organization</label>
-                        <input type="text" id="org" required placeholder="NGO, Company, or Govt Entity">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Corporate Email</label>
-                        <input type="email" id="email" required placeholder="john@organization.org">
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Required Capability</label>
-                        <select id="service">
-                            <option>Market Research & Intelligence</option>
-                            <option>Monitoring & Evaluation (M&E)</option>
-                            <option>Feasibility & Risk Advisory</option>
-                            <option>Other Research/Advisory Inquiry</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="submit-btn">Submit Request</button>
-                </form>
+
+<section id="services">
+    <h2 class="section-title">Our Capabilities</h2>
+
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>Market Research</h3>
+            <p>
+                We provide evidence-based market insights, consumer analysis,
+                competitor mapping, and demand assessments.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Monitoring & Evaluation</h3>
+            <p>
+                We design and implement monitoring, evaluation, accountability,
+                and learning systems for NGOs, donors, and development projects.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Feasibility Studies</h3>
+            <p>
+                We assess technical, financial, operational, and market feasibility
+                before major investments or project implementation.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <h3>Data Analysis</h3>
+            <p>
+                We transform raw data into clean reports, dashboards, findings,
+                recommendations, and decision-ready evidence.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="case-studies" id="cases">
+    <h2 class="section-title">Verified Outcomes</h2>
+
+    <div class="case-grid">
+        <div class="case-card">
+            <span class="case-tag">Market Intelligence</span>
+            <h3>Telecom Sector Regional Assessment</h3>
+            <p>
+                Designed a mixed-method research model using surveys and interviews
+                to identify untapped consumer opportunities.
+            </p>
+            <div class="case-metric">
+                Impact: Improved market understanding and service targeting.
             </div>
         </div>
-    </section>
 
-    <!-- Simple Corporate Footer -->
-    <footer>
-        <p>&copy; 2026 RESEARCH EXCELLENCE AND LEARNING (REAL Consulting Firm). All rights reserved. Strategically Built for High Conversions.</p>
-    </footer>
+        <div class="case-card">
+            <span class="case-tag">Policy Framework</span>
+            <h3>SME Digital Payments Readiness</h3>
+            <p>
+                Delivered a public-private policy framework mapping digital payment
+                readiness and mobile commerce opportunities.
+            </p>
+            <div class="case-metric">
+                Impact: Supported evidence-based digital transformation planning.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="contact-container">
+
+        <div class="contact-info">
+            <h2>Request a Proposal</h2>
+
+            <p style="color: var(--text-light); margin-bottom: 2rem;">
+                Submit your project request using the form. Your proposal request
+                will be sent directly to our email, and our team will review it carefully.
+            </p>
+
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">📍 Location</p>
+            <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                Hargeisa, Woqooyi Galbeed, Somaliland
+            </p>
+
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">📧 Proposal Email</p>
+            <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                <a href="mailto:mac041@hotmail.com" style="color: var(--text-light); text-decoration: none;">
+                    mac041@hotmail.com
+                </a>
+            </p>
+
+            <p style="font-weight: 600; margin-bottom: 0.5rem;">🕒 Response Time</p>
+            <p style="color: var(--text-light);">
+                Within 24–48 business hours.
+            </p>
+        </div>
+
+        <div class="contact-form">
+
+            <form action="https://formsubmit.co/mac041@hotmail.com" method="post">
+
+                <input type="hidden" name="_subject" value="New Proposal Request - REAL Consulting">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="Full Name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="org">Organization *</label>
+                    <input type="text" id="org" name="Organization" required placeholder="NGO, Company, Government Entity">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="Email Address" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="text" id="phone" name="Phone Number" placeholder="+252 XX XXX XXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Required Service *</label>
+                    <select id="service" name="Required Service" required>
+                        <option value="">Select Service</option>
+                        <option>Market Research</option>
+                        <option>Monitoring & Evaluation (M&E)</option>
+                        <option>Baseline Survey</option>
+                        <option>Endline Survey</option>
+                        <option>Feasibility Study</option>
+                        <option>Data Analysis</option>
+                        <option>Strategic Advisory</option>
+                        <option>Training & Capacity Building</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Estimated Budget</label>
+                    <input type="text" id="budget" name="Estimated Budget" placeholder="USD 5,000">
+                </div>
+
+                <div class="form-group">
+                    <label for="timeline">Expected Timeline</label>
+                    <input type="text" id="timeline" name="Expected Timeline" placeholder="e.g. 2 Months">
+                </div>
+
+                <div class="form-group">
+                    <label for="details">Project / Proposal Details *</label>
+                    <textarea id="details" name="Project Details" rows="6" required
+                        placeholder="Describe your project objectives, scope of work, expected outputs, timeline, and any special requirements."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Submit Proposal Request
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>
+        &copy; 2026 RESEARCH EXCELLENCE AND LEARNING (REAL Consulting Firm).
+        All rights reserved.
+    </p>
+</footer>
 
 </body>
 </html>
+```
